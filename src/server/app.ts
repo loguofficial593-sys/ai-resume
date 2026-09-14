@@ -2,7 +2,7 @@ import express from "express";
 import { GoogleGenAI, Type } from "@google/genai";
 import dotenv from "dotenv";
 import multer from "multer";
-import pdfParse from "pdf-parse";
+import pdfParse from "pdf-parse/lib/pdf-parse.js";
 
 dotenv.config();
 
@@ -22,7 +22,7 @@ function getAI(): GoogleGenAI {
 
 function hasGeminiKey(): boolean {
   const key = process.env.GEMINI_API_KEY;
-  return Boolean(key && key.trim().length > 5 && !key.includes('MY_GEMINI_API_KEY'));
+  return Boolean(key && key.trim().length > 5 && !key.includes('MY_'));
 }
 
 // Resilient Gemini content generator with automatic multi-model fallback and retries
